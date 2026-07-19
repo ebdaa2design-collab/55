@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=3">
+    <title>ورشة 55</title>
+</head>
+<body>
+
+    <div class="red-glow-bar"></div>
+
+    <div class="container">
+        
+        <div class="logo-wrapper">
+            <img src="img/logo.jpg" alt="ورشة 55" class="main-logo">
+        </div>
+
+        <h1 class="main-title"></h1>
+
+        <div class="button-group">
+            
+            <div class="btn-metallic-border">
+                <a href="https://www.facebook.com/share/1EB41iAUoB/?mibextid=wwXIfr" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                onclick="window.open(this.href, '_blank'); return false;" 
+                class="custom-btn btn-dark-red">
+                    <span class="btn-text">ورشة 55 لصيانة الفرامل الكهربائية</span>
+                </a>
+            </div>
+
+            <div class="btn-metallic-border">
+                <a href="https://www.facebook.com/share/17yx1eEehW/?mibextid=wwXIfr" target="_blank" rel="noopener" class="custom-btn btn-facebook">
+                    <span class="btn-text">فني فرامل كهربائية</span>
+                    <img src="img/facebook.png" alt="Facebook" class="btn-img-icon">
+                </a>
+            </div>
+
+            <div class="btn-metallic-border">
+                <a href="https://youtube.com/channel/UCZ6p9lyziMoCXH0Wif9_Lnw?si=G-n6fyt8tR5wF1aM" target="_blank" rel="noopener" class="custom-btn btn-youtube">
+                    <span class="btn-text-en">YouTube</span>
+                    <img src="img/youtube.png" alt="YouTube" class="btn-img-icon">
+                </a>
+            </div>
+
+            <div class="btn-metallic-border">
+                <a href="https://www.tiktok.com/@brakeabs?_r=1&_t=ZS-9850kNuqhzW" target="_blank" rel="noopener" class="custom-btn btn-tiktok">
+                    <span class="btn-text-en">TikTok</span>
+                    <img src="img/tiktok.png
+                    " alt="TikTok" class="btn-img-icon">
+                </a>
+            </div>
+
+            <div class="btn-metallic-border">
+                <a href="https://snapchat.com/t/yPjcI9lu" target="_blank"  rel="noopener" class="custom-btn btn-snapchat">
+                    <span class="btn-text-en">Snapchat</span>
+                    <img src="img/snapchat.png" alt="Snapchat" class="btn-img-icon">
+                </a>
+            </div>
+
+            <div class="btn-metallic-border">
+                <a href="https://wa.me/218911270110" target="_blank" rel="noopener" class="custom-btn btn-whatsapp">
+                    <span class="btn-text-num">0911270110</span>
+                    <img src="img/WhatsApp.png" alt="WhatsApp" class="btn-img-icon">
+                </a>
+            </div>
+
+            <div class="btn-metallic-border">
+                <a href="https://wa.me/218911270811" target="_blank" rel="noopener" class="custom-btn btn-whatsapp">
+                    <span class="btn-text-num">0911270811</span>
+                    <img src="img/WhatsApp.png" alt="WhatsApp" class="btn-img-icon">
+                </a>
+            </div>
+
+            <div class="btn-metallic-border">
+                <a href="javascript:void(0)" id="wifiBtn" class="custom-btn btn-wifi">
+                    <span class="btn-text-en">WiFi password</span>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+    <footer class="custom-footer">
+        <div class="footer-content">
+            <span class="footer-text">الموقع: طرابلس / تاجوراء</span>
+        </div>
+    </footer>
+
+    <div id="wifiModal" class="modal-overlay">
+        <div class="modal-card">
+            <button id="closeModalBtn" class="modal-close-x">&times;</button>
+            
+            <div class="modal-wifi-icon-wrapper">
+                <i class="fa-solid fa-wifi" style="color: #ffffff; font-size: 38px;"></i>
+            </div>
+
+            <h2 class="modal-title-text">Wi-Fi Password</h2>
+            
+            <div class="password-box">
+                <div class="password-label">كلمة المرور</div>
+                <div id="passwordText" class="password-number">00802164</div>
+            </div>
+
+            <button id="copyPasswordBtn" class="modal-action-btn">نسخ كلمة المرور</button>
+        </div>
+    </div>
+
+        <script>
+        const wifiBtn = document.getElementById('wifiBtn');
+        const wifiModal = document.getElementById('wifiModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const copyPasswordBtn = document.getElementById('copyPasswordBtn');
+        const passwordText = document.getElementById('passwordText');
+
+        wifiBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            wifiModal.classList.add('active');
+        });
+
+        closeModalBtn.addEventListener('click', function() {
+            wifiModal.classList.remove('active');
+        });
+
+        wifiModal.addEventListener('click', function(e) {
+            if (e.target === wifiModal) {
+                wifiModal.classList.remove('active');
+            }
+        });
+
+        copyPasswordBtn.addEventListener('click', function() {
+            const passwordValue = passwordText.innerText;
+            
+            navigator.clipboard.writeText(passwordValue).then(function() {
+                const originalText = copyPasswordBtn.innerText;
+                copyPasswordBtn.innerText = "تم النسخ بنجاح! ✓";
+                copyPasswordBtn.style.background = "linear-gradient(to bottom, #25D366 0%, #075E54 100%)"; 
+                
+                setTimeout(function() {
+                    copyPasswordBtn.innerText = originalText;
+                    copyPasswordBtn.style.background = "linear-gradient(to bottom, #d61818 0%, #a60d0d 100%)";
+                }, 2000);
+            }).catch(function(err) {
+                alert('عذراً، فشل نسخ الكود تلقائياً: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
